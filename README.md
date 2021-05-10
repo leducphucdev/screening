@@ -2,7 +2,7 @@
 
 Build a game with 4 buttons, the UI looks like this. The UI should be responsive. The reset button is the only one that gets moved as the screen size changed.
 
-![States]("4buttons.png")
+![States](4buttons.png)
 
 ### Engine rule
 
