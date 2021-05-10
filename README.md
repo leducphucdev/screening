@@ -32,4 +32,3 @@ Build a game with 4 buttons, the UI looks like this. The UI should be responsive
 - How clean is your solution
 - Professional code quality
 
-### Submission instructions
