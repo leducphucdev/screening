@@ -26,6 +26,7 @@ Build a game with 4 buttons, the UI looks like this. The UI should be responsive
 - Implement the backend and expose API to progress to the next stage. Imagine something like `/api/transition/<nextstep>` where `nextstep` is the variable. The Impossible state should return status 400. For example, `/api/transition/yellow` while the current state is "Green" is invalid
 - Write the README file so people can work on the repo as well
 - Explain how'll you test the application
+- Prefer, work to be done in Typescript and ReactJS
 
 ### What we'll evaluate
 
