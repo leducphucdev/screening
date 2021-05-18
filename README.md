@@ -19,11 +19,21 @@ Build a game with 4 buttons, the UI looks like this. The UI should be responsive
     - ⛔ Blue → Yellow → Blue → Yellow
     - ⛔ Blue → Green → Blue → Yellow → Blue → Yellow
 
-### What will you implement?
+
+### What will you implement for the fullstack position
 
 - UI to display the state. The currently selected button will be a highlight in Red. Only enable possible moves of the current state
 - Clicking button will cause the engine to move to its next stage
-- Implement the backend and expose API to progress to the next stage. Imagine something like `/api/transition/<nextstep>` where `nextstep` is the variable. The Impossible state should return status 400. For example, `/api/transition/yellow` while the current state is "Green" is invalid
+- Implement the backend and expose necessary APIs to progress to the next stage. Imagine something like `/api/transition/<nextstep>` where `nextstep` is the variable. The Impossible state should return status 400. For example, `/api/transition/yellow` while the current state is "Green" is invalid
+- Write the README file so people can work on the repo as well
+- Explain how'll you test the application
+- Prefer, work to be done in Typescript and ReactJS
+
+### What will you implement for the frontend position
+
+- Implement the engine logic in frontend. The state should be persisted on the client side, as such, the state will be kept across page refreshes
+- UI to display the state. The currently selected button will be a highlight in Red. Only enable possible moves of the current state
+- Clicking button will cause the engine to move to its next stage
 - Write the README file so people can work on the repo as well
 - Explain how'll you test the application
 - Prefer, work to be done in Typescript and ReactJS
@@ -32,4 +42,3 @@ Build a game with 4 buttons, the UI looks like this. The UI should be responsive
 
 - How clean is your solution
 - Professional code quality
-
