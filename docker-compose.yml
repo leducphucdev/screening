@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  # Nginx
+  silenteer-ngnix:
+    container_name: silenteer-ngnix
+    image: nginx:1.19.1
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3000:80"
+    depends_on: 
+      - silenteer-api
+      - silenteer-react
+    volumes:
+      - ./etc/nginx:/etc/nginx/conf.d
+      - ./front-end/build:/etc/nginx/html
+    command: nginx -g "daemon off;"
+    networks:
+      - silenteer_network
+  
+  # Express
+  silenteer-api:
+    container_name: silenteer-api
+    image: node:16
+    restart: unless-stopped
+    working_dir: /project
+    logging:
+      options:
+        max-size: '12m'
+        max-file: '5'
+      driver: json-file
+    volumes: 
+      - ./back-end:/project
+    command: bash -c "yarn install && yarn start" 
+    networks:
+      - silenteer_network
+
+  # React
+  silenteer-react:
+    container_name: silenteer-react
+    image: node:16
+    working_dir: /front-end
+    command: bash -c "yarn install && yarn build"
+    volumes:
+      - ./front-end:/front-end
+    networks:
+      - silenteer_network
+
+networks:
+  silenteer_network:
+    name: silenteer_network
+    driver: bridge
