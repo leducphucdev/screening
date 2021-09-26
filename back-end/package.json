@@ -16,6 +16,7 @@
     "bootstrap": "5.1.1",
     "cors": "^2.8.5",
     "express": "4.17.1",
+    "express-validator": "^6.12.1",
     "react-bootstrap": "^2.0.0-rc.0"
   },
   "devDependencies": {

@@ -3,9 +3,9 @@ import Green from './green';
 import Yellow from './yellow';
 
 class FactoryStep {
-	readonly step: string;
-	readonly instance: any;
-	readonly fromStep: string;
+	private readonly step: string;
+	private readonly instance: any;
+	private readonly fromStep: string;
 
 	constructor(step: any, fromStep: string) {
 		this.step = step;

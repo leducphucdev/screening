@@ -49,21 +49,23 @@ class Home extends React.Component {
       });
       
       if (result.error === 0) {
-        this.setStateMessage({
-          error: 0,
-          message: '',
-        });
+        this.setStateMessage(
+          this.state,
+          {
+            error: 0,
+            message: '',
+          },
+        );
       } else {
-        this.setState({ ...state, step: stepOld});
-        this.setStateMessage(result);
+        this.setStateMessage({ ...state, step: stepOld }, result);
       }
     }
 
     this.pageLoadFoFirst();
   }
 
-  setStateMessage (alert: any) {
-    this.setState({ ...this.state, alert: alert});
+  setStateMessage(state: object, alert: any) {
+    this.setState({ ...state, alert: alert});
   }
 
   pageLoadFoFirst() {
