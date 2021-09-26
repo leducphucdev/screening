@@ -76,7 +76,7 @@ class Home extends React.Component {
     const { step, alert } = this.state;
 
     return (
-      <div className='container mx-auto text-2xl'>
+      <div className='container mx-auto md:text-xl md:text-2xl p-5 md:p-2'>
         <div className='color-error'>{alert.message}</div>
         <div className='grid grid-cols-3 grid-row-2 grid-flow-col h-screen'>
           <div className='col-span-2 grid grid-cols-2'>

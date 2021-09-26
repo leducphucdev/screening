@@ -49,23 +49,27 @@ Create file .env in front-end/.env
 
 > REACT_APP_API_ENDPOINT=http://localhost:8000
 
-**2. Docker:** 
+**2. Run:** 
 
-We use Docker to run a development web server and build the project.
+**React**:
 
-After installing Docker, you should be able to run the following command docker-compose.
+Start express back end, run:
 
-Start docker container, run:
+    cd front-end
 
-    docker-compose up --build
+    yarn start
 
-Stop and remove the container, run:
+**Express Back-end**:
 
-    docker-compose -f down
+Start express back end, run:
+
+    cd back-end
+
+    yarn start
 
 **3. Open browser**
 
-Then navigate to [http://localhost](http://localhost) in your browser
+Then navigate to [http://localhost:3000](http://localhost:3000) in your browser
 
 [Docker]: https://www.docker.com
 [React]: https://reactjs.org

@@ -15,7 +15,7 @@ const BoxColor = ({ step, state, onClick }:Props) => {
 
   return (
     <div className={`step__container ${step} ${state === step ? 'boder-red' : ''}`}>
-      <div className='step__container--child' onClick={handleClick}>{step}</div>
+      <div className='step__container--child capitalize' onClick={handleClick}>{step}</div>
     </div>
   );
 };

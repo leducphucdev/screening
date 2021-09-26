@@ -8,10 +8,10 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on: 
-      - back_end
-      - react
+      - silenteer-api
+      - silenteer-react
     volumes:
       - ./etc/nginx:/etc/nginx/conf.d
       - ./front-end/build:/etc/nginx/html

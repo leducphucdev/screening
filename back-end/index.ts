@@ -28,7 +28,6 @@ app.put('/api/transition/:step', (req: express.Request, res: express.Response) =
   const step: any = req.params.step;
   const fromStep: string = req.body.from_step;
   const firstLoadPage: number = req.body.first_load_page;
-  let result: any;
   
   try {
     const factoryStep: FactoryStep = new FactoryStep(step, fromStep); 
@@ -37,15 +36,13 @@ app.put('/api/transition/:step', (req: express.Request, res: express.Response) =
     const stateStep = new StateStep(firstLoadPage, step);
     stateStep.checkState();
 
-    result = {
+    return res.status(200).json({
       error: 0,
       message: 'Successful next step',
-    };
+    });
   } catch (e: any) {
-    result = e;
+    return res.status(400).json(e);
   }
-
-  return res.json(result);
 });
 app.listen(PORT, () => {
   console.log(`Server is running at https://localhost:${PORT}`);

@@ -2,6 +2,27 @@ import Axios from 'axios';
 
 const { REACT_APP_API_ENDPOINT } = process.env;
 
+class ErrorApi {
+  public error: number = 1;
+  public message: string = 'Incident occurred. Please try again!';
+
+  constructor(error: any) {
+    if (error.response.status === 400) {
+      const data = error.response.data;
+      this.setError(data.error);
+      this.setMessage(data.message);
+    }
+  }
+
+  setError(error: number) {
+    this.error = error;
+  }
+  
+  setMessage(message: string) {
+    this.message = message;
+  }
+}
+
 export default class RequestService {
   getURL(subURL: string) {
     return `${REACT_APP_API_ENDPOINT}/${subURL}`;
@@ -18,8 +39,8 @@ export default class RequestService {
       .then(res => {
         return res.data;
       })
-      .catch(err => {
-        // throw new RequestError(err);
+      .catch(error => {
+        return new ErrorApi(error);
       });
   }
 }
