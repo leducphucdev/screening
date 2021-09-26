@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  # Nginx
+  ngnix:
+    container_name: ngnix
+    image: nginx:1.19.1
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+    depends_on: 
+      - back_end
+      - react
+    volumes:
+      - ./etc/nginx:/etc/nginx/conf.d
+    command: nginx -g "daemon off;"
+    networks:
+      - silenteer_network
+
+  back_end:
+    container_name: back_end
+    build:
+      context: .
+      dockerfile: ./etc/back-end/Dockerfile
+    restart: unless-stopped
+    working_dir: /project
+    logging:
+      options:
+        max-size: '12m'
+        max-file: '5'
+      driver: json-file
+    volumes: 
+      - ./back-end:/project
+    command: bash -c "export FLASK_APP=__init__.py && export FLASK_ENV=development && python3 __init__.py" 
+    # ports:
+    #   - 5000:5000
+    networks:
+      - silenteer_network
+
+  # React
+  react:
+    container_name: react
+    image: node:16
+    restart: unless-stopped
+    working_dir: /front-end
+    tty: true
+    command: bash -c "yarn install && yarn start"
+    volumes:
+      - ./front-end:/front-end
+    # ports:
+    #   - 3000:3000
+    networks:
+      - silenteer_network
+
+networks:
+  silenteer_network:
+    name: silenteer_network
+    driver: bridge
