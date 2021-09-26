@@ -1,9 +1,9 @@
 let steps: string[] = [];
 
 class StateStep {
-	readonly step: string;
-    readonly notColorDuplicate: string = 'yellow';
-    readonly firstLoadPage: number;
+	private readonly step: string;
+    private readonly notStepDuplicate: string = 'yellow';
+    private readonly firstLoadPage: number;
 
 	constructor(firstLoadPage: number = 1, step: string = '') {
         this.step = step;
@@ -19,11 +19,10 @@ class StateStep {
 
     checkStepYellowDuplicate(): void {
         const step = this.step;
-		if (step == this.notColorDuplicate && steps.indexOf(step) !== -1) {
-            throw { error: 101, message: 'Step yellow step already exists' };
-		} else {
-			this.setSteps(step);
+		if (step == this.notStepDuplicate && steps.indexOf(step) !== -1) {
+            throw { error: 101, message: 'Step yellow already exists' };
 		}
+        return this.setSteps(step);
 	}
 
 	setSteps(step: string) {

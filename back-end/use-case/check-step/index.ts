@@ -26,8 +26,6 @@ class FactoryStep {
 	nextStep(): any {
 		if (!this.instance.nextStep()) {
 			throw { error: 102, message: `Step ${this.step} can't next from ${this.fromStep}` };
-		} else {
-			return true;
 		}
 	}
 };

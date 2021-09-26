@@ -18,7 +18,8 @@ services:
     command: nginx -g "daemon off;"
     networks:
       - silenteer_network
-
+  
+  # Express
   silenteer-api:
     container_name: silenteer-api
     image: node:16
@@ -43,8 +44,6 @@ services:
     command: bash -c "yarn install && yarn build"
     volumes:
       - ./front-end:/front-end
-    # ports:
-    #   - 3000:3000
     networks:
       - silenteer_network
 

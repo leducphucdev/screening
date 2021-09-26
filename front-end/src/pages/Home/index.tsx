@@ -10,7 +10,7 @@ class Home extends React.Component {
   state: any = {};
 
   stateDefalut: any = {
-    step: 'green',
+    step: 'blue',
     alert: {
       error: 0,
       message: '',
@@ -57,6 +57,7 @@ class Home extends React.Component {
           },
         );
       } else {
+        console.log('as');
         this.setStateMessage({ ...state, step: stepOld }, result);
       }
     }

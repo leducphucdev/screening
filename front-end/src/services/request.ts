@@ -4,10 +4,10 @@ const { REACT_APP_API_ENDPOINT } = process.env;
 
 class ErrorApi {
   public error: number = 1;
-  public message: string = 'Incident occurred. Please try again!';
+  public message: string = 'Error! An error occurred. Please try again later!';
 
   constructor(error: any) {
-    if (error.response.status === 400) {
+    if (error.response && error.response.status === 400) {
       const data = error.response.data;
       this.setError(data.error);
       this.setMessage(data.message);
@@ -23,7 +23,7 @@ class ErrorApi {
   }
 }
 
-export default class RequestService {
+ class RequestService {
   getURL(subURL: string) {
     return `${REACT_APP_API_ENDPOINT}/${subURL}`;
   }
@@ -44,3 +44,5 @@ export default class RequestService {
       });
   }
 }
+
+export default RequestService;
