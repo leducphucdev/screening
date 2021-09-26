@@ -76,33 +76,35 @@ class Home extends React.Component {
     const { step, alert } = this.state;
 
     return (
-      <div className='container'>
-        <p className='color-error'>{alert.message}</p>
-        <div className='flex'>
-          <div className='col-6 step'>
-            <BoxColor 
-              step='blue'
-              state={step}
-              onClick={this.handleClickColor}
-              ></BoxColor>
-          </div>
-          <div className='col-6 step'>
-            <div className='step__middle'>
+      <div className='container mx-auto text-2xl'>
+        <div className='color-error'>{alert.message}</div>
+        <div className='grid grid-cols-3 grid-row-2 grid-flow-col h-screen'>
+          <div className='col-span-2 grid grid-cols-2'>
+            <div className='step'>
               <BoxColor 
-                step='green'
+                step='blue'
                 state={step}
                 onClick={this.handleClickColor}
-              ></BoxColor>
+                ></BoxColor>
             </div>
-            <div className='step__middle'>
-              <BoxColor 
-                step='yellow'
-                state={step}
-                onClick={this.handleClickColor}
-              ></BoxColor>
+            <div className='step'>
+              <div className='step__middle'>
+                <BoxColor 
+                  step='green'
+                  state={step}
+                  onClick={this.handleClickColor}
+                ></BoxColor>
+              </div>
+              <div className='step__middle'>
+                <BoxColor 
+                  step='yellow'
+                  state={step}
+                  onClick={this.handleClickColor}
+                ></BoxColor>
+              </div>
             </div>
           </div>
-          <div className='col-6 step'>
+          <div className='step'>
             <BoxReset onClick={this.handleResetState}></BoxReset>
           </div>
         </div>

@@ -1,44 +1,73 @@
-### Requirement
+# Author:
 
-Build a game with 4 buttons, the UI looks like this. The UI should be responsive. The reset button is the only one that gets moved as the screen size changed.
+* Mr.Duc Phuc <<leducphuc1234@gmail.com>>
 
-![States](4buttons.png)
+# Description
+Run project has 2 options
 
-### Engine rule
+# Technical
+* [Docker][]
+* [Nginx][]
+* [React][]
+* [Express][]
 
-- You'll start from Blue
-- Reset will put you back to Blue
-- From Blue, you can go with Green
-- From Blue, you can go with Yellow
-- From Green, you can only go to Blue
-- From Yellow, you can only go to Blue
-- You cannot visit Yellow consecutively
-    - ✅ Blue → Yellow
-    - ✅ Blue → Green → Blue → Yellow
-    - ✅ Blue → Green → ... → Blue → Green → Blue → Yellow
-    - ⛔ Blue → Yellow → Blue → Yellow
-    - ⛔ Blue → Green → Blue → Yellow → Blue → Yellow
+## Option 1
 
+**1. Environment variable**
 
-### What will you implement for the fullstack position
+**React**:
 
-- UI to display the state. The currently selected button will be a highlight in Red. Only enable possible moves of the current state
-- Clicking button will cause the engine to move to its next stage
-- Implement the backend and expose necessary APIs to progress to the next stage. Imagine something like `/api/transition/<nextstep>` where `nextstep` is the variable. The Impossible state should return status 400. For example, `/api/transition/yellow` while the current state is "Green" is invalid
-- Write the README file so people can work on the repo as well
-- Explain how'll you test the application
-- Prefer, work to be done in Typescript and ReactJS
+Create file .env in front-end/.env
 
-### What will you implement for the frontend position
+> REACT_APP_API_ENDPOINT=http://localhost
 
-- Implement the engine logic in frontend. The state should be persisted on the client side, as such, the state will be kept across page refreshes
-- UI to display the state. The currently selected button will be a highlight in Red. Only enable possible moves of the current state
-- Clicking button will cause the engine to move to its next stage
-- Write the README file so people can work on the repo as well
-- Explain how'll you test the application
-- Prefer, work to be done in Typescript and ReactJS
+**2. Docker:** 
 
-### What we'll evaluate
+We use Docker to run a development web server and build the project.
 
-- How clean is your solution
-- Professional code quality
+After installing Docker, you should be able to run the following command docker-compose.
+
+Start docker container, run:
+
+    docker-compose up --build
+
+Stop and remove the container, run:
+
+    docker-compose -f down
+
+**3. Open browser**
+
+Then navigate to [http://localhost](http://localhost) in your browser
+
+## Option 2
+
+**1. Environment variable**
+
+**React**:
+
+Create file .env in front-end/.env
+
+> REACT_APP_API_ENDPOINT=http://localhost:8000
+
+**2. Docker:** 
+
+We use Docker to run a development web server and build the project.
+
+After installing Docker, you should be able to run the following command docker-compose.
+
+Start docker container, run:
+
+    docker-compose up --build
+
+Stop and remove the container, run:
+
+    docker-compose -f down
+
+**3. Open browser**
+
+Then navigate to [http://localhost](http://localhost) in your browser
+
+[Docker]: https://www.docker.com
+[React]: https://reactjs.org
+[Nginx]: https://nginx.org/en
+[Express]: https://expressjs.com

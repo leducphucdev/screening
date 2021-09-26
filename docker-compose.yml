@@ -2,8 +2,8 @@ version: "3.8"
 
 services:
   # Nginx
-  ngnix:
-    container_name: ngnix
+  silenteer-ngnix:
+    container_name: silenteer-ngnix
     image: nginx:1.19.1
     restart: unless-stopped
     tty: true
@@ -14,15 +14,14 @@ services:
       - react
     volumes:
       - ./etc/nginx:/etc/nginx/conf.d
+      - ./front-end/build:/etc/nginx/html
     command: nginx -g "daemon off;"
     networks:
       - silenteer_network
 
-  back_end:
-    container_name: back_end
-    build:
-      context: .
-      dockerfile: ./etc/back-end/Dockerfile
+  silenteer-api:
+    container_name: silenteer-api
+    image: node:16
     restart: unless-stopped
     working_dir: /project
     logging:
@@ -32,20 +31,16 @@ services:
       driver: json-file
     volumes: 
       - ./back-end:/project
-    command: bash -c "export FLASK_APP=__init__.py && export FLASK_ENV=development && python3 __init__.py" 
-    # ports:
-    #   - 5000:5000
+    command: bash -c "yarn install && yarn start" 
     networks:
       - silenteer_network
 
   # React
-  react:
-    container_name: react
+  silenteer-react:
+    container_name: silenteer-react
     image: node:16
-    restart: unless-stopped
     working_dir: /front-end
-    tty: true
-    command: bash -c "yarn install && yarn start"
+    command: bash -c "yarn install && yarn build"
     volumes:
       - ./front-end:/front-end
     # ports:
