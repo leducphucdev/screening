@@ -57,7 +57,6 @@ class Home extends React.Component {
           },
         );
       } else {
-        console.log('as');
         this.setStateMessage({ ...state, step: stepOld }, result);
       }
     }
